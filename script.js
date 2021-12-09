@@ -46,3 +46,12 @@ function receiveColor(e) {
     e.target.style.backgroundColor = targetColor
 }
 pixelBoard.addEventListener('click', receiveColor)
+
+let clearBtn = document.getElementById('clear-board')
+let pixelBoardChild = pixelBoard.children
+function clearBoard() {
+    for(let i=0;i<pixelBoardChild.length;i+=1) {
+        pixelBoardChild[i].style.backgroundColor = 'white'
+    }
+}
+clearBtn.addEventListener('click',clearBoard)
