@@ -41,3 +41,8 @@ function theBoard(pixels) {
     document.getElementById('board-size').value = ''
 }
 theBoard(5)
+
+function receiveColor(e) {
+    e.target.style.backgroundColor = targetColor
+}
+pixelBoard.addEventListener('click', receiveColor)
