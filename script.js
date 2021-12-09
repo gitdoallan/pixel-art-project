@@ -16,3 +16,11 @@ function generateColorsDiv() {
 }
 generateColorsDiv()
 changeBtn.addEventListener('click', generateColorsDiv)
+
+let superChangeBtn = document.getElementById('super-change')
+function superChange() {
+    setInterval(function() {
+        generateColorsDiv()
+        }, 500) 
+}
+superChangeBtn.addEventListener('click', superChange)
