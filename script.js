@@ -25,6 +25,18 @@ function superChange() {
 }
 superChangeBtn.addEventListener('click', superChange)
 
+let targetColor = 'rgb(0, 0, 0)'
+function pickColor(e) {
+    let colorPaletteChild = colorPalette.children
+    for (let i=0;i<colorPaletteChild.length;i+=1) {
+        if (colorPaletteChild[i].classList.contains('selected') && colorPaletteChild[i] !== e.target)
+        colorPaletteChild[i].classList.remove('selected')
+    }
+    e.target.classList.add('selected')
+    targetColor = getComputedStyle(e.target).backgroundColor
+}
+colorPalette.addEventListener('click', pickColor)
+
 let generateBtn = document.getElementById('generate-board')
 let pixelBoard = document.getElementById('pixel-board')
 function theBoard(pixels) {
@@ -41,6 +53,21 @@ function theBoard(pixels) {
     document.getElementById('board-size').value = ''
 }
 theBoard(5)
+
+function checkBoard() {
+    pixels = document.getElementById('board-size').value
+    if (pixels === '' || pixels<0) {
+        return alert('Board inválido!')
+    }
+    if (pixels<5) {
+        pixels = 5
+    }
+    if (pixels>50) {
+        pixels = 50
+    }
+    theBoard(pixels)
+}
+generateBtn.addEventListener('click',checkBoard)
 
 function receiveColor(e) {
     e.target.style.backgroundColor = targetColor
