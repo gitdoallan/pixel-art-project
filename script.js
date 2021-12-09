@@ -24,3 +24,20 @@ function superChange() {
         }, 500) 
 }
 superChangeBtn.addEventListener('click', superChange)
+
+let generateBtn = document.getElementById('generate-board')
+let pixelBoard = document.getElementById('pixel-board')
+function theBoard(pixels) {
+    let boardSize = pixels*40
+    let boardPixels = pixels*pixels
+    pixelBoard.innerHTML = ''
+    pixelBoard.style.width = `${boardSize}px`
+    pixelBoard.style.height = `${boardSize}px`
+    for(let i=0; i<boardPixels; i+=1) {
+        let singlePixel = document.createElement('div')
+        pixelBoard.appendChild(singlePixel)
+        singlePixel.className = 'pixel'
+    }
+    document.getElementById('board-size').value = ''
+}
+theBoard(5)
