@@ -1,3 +1,4 @@
+//Requisito 12 + bônus de alterar a cor clicando no botão "Trocar Cores"
 const colorPalette = document.getElementById('color-palette')
 const changeBtn = document.getElementById('change-colors')
 function generateColorsDiv() {
@@ -17,6 +18,7 @@ function generateColorsDiv() {
 generateColorsDiv()
 changeBtn.addEventListener('click', generateColorsDiv)
 
+//Bônus de clicar em "Cores Xablau" e elas ficarem alterando sozinhas a cada 0,5 segundos.
 const superChangeBtn = document.getElementById('super-change')
 let isXablauActive = false
 function superChange() {
@@ -25,6 +27,7 @@ function superChange() {
         }, 500) 
 }
 
+//Clicando novamente em "Cores Xablau" vai desativar a função.
 function checkXablau() {
     if (isXablauActive === true) {
         clearInterval(xablau)
@@ -36,6 +39,7 @@ function checkXablau() {
 }
 superChangeBtn.addEventListener('click', checkXablau)
 
+//Requisitos 6 e 7
 let targetColor = 'rgb(0, 0, 0)'
 function pickColor(e) {
     let colorPaletteChild = colorPalette.children
@@ -48,6 +52,7 @@ function pickColor(e) {
 }
 colorPalette.addEventListener('click', pickColor)
 
+//Requisitos 5 e 10
 const generateBtn = document.getElementById('generate-board')
 const pixelBoard = document.getElementById('pixel-board')
 function theBoard(pixels) {
@@ -65,6 +70,7 @@ function theBoard(pixels) {
 }
 theBoard(5)
 
+//Requisito 11
 function checkBoard() {
     pixels = document.getElementById('board-size').value
     if (pixels === '' || pixels<0) {
@@ -80,6 +86,7 @@ function checkBoard() {
 }
 generateBtn.addEventListener('click',checkBoard)
 
+//Bônus de apertar Enter para fazer a ação do requisito 11
 let boardSizeInput = document.getElementById('board-size')
 function keypress(e) {
     if (e.key === 'Enter') {
@@ -88,11 +95,13 @@ function keypress(e) {
 }
 boardSizeInput.addEventListener('keyup', keypress)
 
+//Requisito 8
 function receiveColor(e) {
     e.target.style.backgroundColor = targetColor
 }
 pixelBoard.addEventListener('click', receiveColor)
 
+//Requisito 9
 const clearBtn = document.getElementById('clear-board')
 let pixelBoardChild = pixelBoard.children
 function clearBoard() {
